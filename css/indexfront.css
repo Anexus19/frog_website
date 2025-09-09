@@ -1,0 +1,175 @@
+/* Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  html, body {
+    height: 100%;
+    width: 100%;
+  }
+  
+  body {
+    background-color: #3FD14E;
+    font-family: 'Fredoka', sans-serif; /* Use Fredoka */
+    color: white;
+    height: 100vh;
+    width: 100vw;
+  }
+  
+  h1 {
+    font-size: 4rem; /* about 3–4x normal size */
+    font-weight: 700; /* bold Fredoka */
+    color: white;
+    text-shadow: 
+      -3px -3px 0 #004d00,
+       3px -3px 0 #004d00,
+      -3px  3px 0 #004d00,
+       3px  3px 0 #004d00; /* thicker outline */
+    margin-bottom: 20px;
+  }
+  
+  p {
+    font-size: 1.5rem; /* bigger than default */
+    font-weight: 400;
+    color: white;
+    text-shadow: 
+      -2px -2px 0 #004d00,
+       2px -2px 0 #004d00,
+      -2px  2px 0 #004d00,
+       2px  2px 0 #004d00;
+  }
+  
+  /* Full width container with two columns */
+  .container {
+    display: flex;
+    height: 100%;
+    width: 100%;
+  }
+  
+  /* Left: content (3/4 width, centered inside itself) */
+  .content {
+    flex: 3;
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* vertically center just the text */
+    align-items: center;     /* horizontally center inside its area */
+    padding: 20px;
+    text-align: center;
+  }
+  
+  /* Right: Giphy background fills full height */
+  .giphy {
+    flex: 1; /* 1/4 width */
+    background-image: url("https://media2.giphy.com/media/v1.Y2lkPTc5MGI3NjExY3hkMzU0cmZ6Yzc5OHJsMHhkNHUybjlueHVpaGVjanJ0MTJwenA1NSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/pI43YlhMoPqsE/giphy.gif");
+    background-size: cover;       /* always fill the column */
+    background-position: center;  /* center focus */
+    background-repeat: no-repeat;
+  }
+  
+  /* 📱 Mobile view adjustments */
+  @media (max-width: 768px) {
+    .container {
+      flex-direction: column;   /* stack vertically */
+    }
+  
+    .content {
+      flex: none;
+      width: 100%;
+      text-align: center;
+      padding: 40px 20px;
+    }
+  
+    .giphy {
+      flex: none;
+      width: 100%;
+      height: 250px;           /* fixed height for background area */
+    }
+  }
+
+  .frog-button {
+    display: inline-block;
+    margin-top: 40px;
+    padding: 15px 40px;
+    font-size: 1.5rem;
+    font-weight: 600;
+    font-family: 'Fredoka', sans-serif;
+    color: white;
+    background-color: #228B22; /* frog green */
+    border: 3px solid #004d00; /* dark green border */
+    border-radius: 30px;
+    text-decoration: none;
+    text-shadow: -2px -2px 0 #004d00, 2px 2px 0 #004d00;
+    transition: all 0.2s ease-in-out;
+    box-shadow: 0 4px 0 #004d00;
+  }
+  
+  .frog-button:hover {
+    background-color: #32CD32; /* lighter green on hover */
+    transform: translateY(-3px);
+    box-shadow: 0 6px 0 #004d00;
+  }
+  
+  .frog-button:active {
+    transform: translateY(2px);
+    box-shadow: 0 2px 0 #004d00;
+  }
+  
+  .circles {
+    position: fixed;   /* stays at bottom left of page */
+    bottom: 0;
+    left: 0;
+    pointer-events: none; /* so clicks pass through */
+  }
+  
+  .circle {
+    position: absolute;
+    border-radius: 50%;
+    opacity: 0.8; /* slight transparency */
+  }
+  
+  /* Biggest circle in the middle */
+  .circle.big {
+    width: 300px;
+    height: 300px;
+    bottom: -150px; /* push 3/4 below the viewport */
+    left: 100px;
+    background-color: #006400; /* darker green */
+  }
+  
+  /* Medium circle to the right of the big one */
+  .circle.medium {
+    width: 200px;
+    height: 200px;
+    bottom: -100px;
+    left: 280px;
+    background-color: #228B22;
+  }
+  
+  /* Small circle to the left of the big one */
+  .circle.small {
+    width: 120px;
+    height: 120px;
+    bottom: -60px;
+    left: -50px;
+    background-color: #32CD32;
+  }
+  
+  /* Transition overlay */
+.page-transition {
+    position: fixed;
+    top: 0;
+    left: -100%; /* start off-screen left */
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.9); /* dark fade */
+    z-index: 9999;
+    pointer-events: none;
+    transition: left 1s ease-in-out; /* sliding effect */
+  }
+  
+  .page-transition.active {
+    left: 0; /* slide across */
+  }
+  

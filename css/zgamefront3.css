@@ -1,0 +1,60 @@
+* { margin:0; padding:0; box-sizing:border-box; }
+
+html, body {
+  width:100%; height:100%;
+  background-color:#4da6ff; /* pond blue */
+  overflow:hidden;
+  font-family: 'Fredoka', sans-serif;
+}
+
+/* Top-left arrow */
+.back-btn {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  width: 60px;
+  height: 40px;
+  background-color: #006400;
+  border:3px solid black;
+  border-radius:8px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  text-decoration:none;
+  cursor:pointer;
+  z-index:10;
+}
+.arrow {
+  display:inline-block;
+  width:0; height:0;
+  border-top:8px solid transparent;
+  border-bottom:8px solid transparent;
+  border-right:14px solid white;
+  transition: transform 0.2s ease;
+}
+.back-btn:hover .arrow { transform: translateX(-5px); }
+
+/* Container for clovers and particles */
+#cloverContainer {
+  position: absolute;
+  width:100%;
+  height:100%;
+  pointer-events:auto;
+}
+
+.clover {
+    position:absolute;
+    font-size:2.5rem; /* slightly bigger */
+    cursor:pointer;
+    user-select:none;
+}
+
+/* Particle style */
+.particle {
+  position:absolute;
+  width:8px;
+  height:8px;
+  background-color:#32CD32; /* bright green */
+  border-radius:50%;
+  pointer-events:none;
+}

@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Clover Pop Page</title>
+  <link rel="stylesheet" href="C:\Users\Administrator\Desktop\Programming Projects\Frog_Website\css\zgamefront3.css">
+</head>
+<body>
+  <!-- Top-left arrow button -->
+  <a href="C:\Users\Administrator\Desktop\Programming Projects\Frog_Website\code\selection.html" class="back-btn">
+    <span class="arrow"></span>
+  </a>
+
+  <!-- Clover container -->
+  <div id="cloverContainer"></div>
+
+  <script>
+    const container = document.getElementById("cloverContainer");
+    const cloverCount = 30;
+
+    function createClover() {
+      const clover = document.createElement("div");
+      clover.classList.add("clover");
+      clover.style.left = Math.random()*90 + "vw";
+      clover.style.top = Math.random()*90 + "vh";
+      clover.textContent = "☘️";
+      container.appendChild(clover);
+
+      // Random sway parameters
+      const swayAmplitude = 3 + Math.random() * 5; // 3-8px
+      const swayDuration = 2000 + Math.random()*2000; // 2-4s
+      const swayDirection = Math.random() < 0.5 ? 1 : -1; // left or right
+
+      clover.animate([
+        { transform: `translateX(0px)` },
+        { transform: `translateX(${swayAmplitude * swayDirection}px)` },
+        { transform: `translateX(${-swayAmplitude * swayDirection}px)` },
+        { transform: `translateX(0px)` }
+      ], {
+        duration: swayDuration,
+        iterations: Infinity,
+        easing: 'ease-in-out'
+      });
+
+      clover.addEventListener("click", () => {
+        createParticles(clover.offsetLeft, clover.offsetTop);
+        clover.remove();
+
+        // Respawn after 1-3 seconds
+        setTimeout(createClover, 1000 + Math.random()*2000);
+      });
+    }
+
+    // Initial staggered clover creation
+    for(let i=0;i<cloverCount;i++){
+      setTimeout(createClover, i*150);
+    }
+
+    // Particle generator
+    function createParticles(x, y){
+      for(let i=0;i<10;i++){
+        const particle = document.createElement("div");
+        particle.classList.add("particle");
+        container.appendChild(particle);
+        particle.style.left = x + "px";
+        particle.style.top = y + "px";
+
+        const angle = Math.random()*2*Math.PI;
+        const distance = 50 + Math.random()*30;
+        const dx = Math.cos(angle)*distance;
+        const dy = Math.sin(angle)*distance;
+
+        particle.animate([
+          {transform:`translate(0,0)`, opacity:1},
+          {transform:`translate(${dx}px, ${dy}px)`, opacity:0}
+        ],{
+          duration: 500 + Math.random()*300,
+          easing:"ease-out"
+        });
+
+        setTimeout(()=> particle.remove(), 800);
+      }
+    }
+  </script>
+</body>
+</html>

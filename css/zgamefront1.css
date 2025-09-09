@@ -1,0 +1,93 @@
+/* Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  height: 100%;
+  width: 100%;
+}
+
+body {
+  background-color: #4da6ff; /* pond blue */
+  font-family: 'Fredoka', sans-serif;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+/* Content */
+.content {
+  text-align: center;
+  z-index: 1;
+  position: relative;
+}
+
+/* Ripple container */
+#ripple-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  z-index: 0;
+}
+
+/* Ripple effect */
+.ripple {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  background: rgba(255, 255, 255, 0.6);
+  border-radius: 50%;
+  transform: scale(0);
+  animation: ripple-animation 1s ease-out forwards;
+}
+
+@keyframes ripple-animation {
+  to {
+    transform: scale(15);
+    opacity: 0;
+  }
+}
+
+/* Back button styling */
+.back-btn {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  width: 60px;
+  height: 40px;
+  background-color: #006400; /* dark green */
+  border: 3px solid black;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  overflow: hidden;
+  cursor: pointer;
+  z-index: 2;
+}
+
+/* Arrow inside button */
+.arrow {
+  display: inline-block;
+  width: 0;
+  height: 0;
+  border-top: 8px solid transparent;
+  border-bottom: 8px solid transparent;
+  border-right: 14px solid white; /* white arrow */
+  transition: transform 0.2s ease;
+}
+
+/* Hover effect: arrow slides left */
+.back-btn:hover .arrow {
+  transform: translateX(-5px);
+}

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AnexusFrogWebsite</title>
+  <link rel="stylesheet" href="C:\Users\Administrator\Desktop\Programming Projects\Frog_Website\css\indexfront.css">
+  <!-- Google Font: Fredoka -->
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+      <!-- Left side content -->
+      <div class="content">
+        <h1>Ribbit Day</h1>
+        <p>I hope you're having a great time!</p>
+
+        <!-- Frog button with JS trigger -->
+        <a href="C:\Users\Administrator\Desktop\Programming Projects\Frog_Website\code\selection.html" class="frog-button" id="frog-link">Jump Inside</a>
+
+        <!-- Decorative circles -->
+        <div class="circles">
+            <div class="circle big"></div>
+            <div class="circle medium"></div>
+            <div class="circle small"></div>
+        </div>
+      </div>
+
+      <!-- Right side with Giphy background -->
+      <div class="giphy"></div>
+    </div>
+
+    <!-- Transition overlay -->
+    <div class="page-transition"></div>
+
+    <script>
+      const link = document.getElementById('frog-link');
+      const transition = document.querySelector('.page-transition');
+
+      link.addEventListener('click', function(event) {
+        event.preventDefault(); // stop immediate navigation
+        transition.classList.add('active'); // start animation
+        setTimeout(() => {
+          window.location.href = link.href; // go to next page after animation
+        }, 1000); // match CSS animation duration
+      });
+    </script>
+</body>
+</html>

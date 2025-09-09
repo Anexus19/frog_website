@@ -1,0 +1,110 @@
+/* General reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  html, body {
+    height: 100%;
+    width: 100%;
+    overflow: hidden; /* prevents scrollbars from animation */
+  }
+  
+  body {
+    background: white;
+    font-family: 'Fredoka', sans-serif;
+    color: #004d00;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+  }
+  
+  /* Text content */
+  .content {
+    position: relative;
+    z-index: 2; /* keep above polkadots */
+    text-align: center;
+  }
+  
+  /* Polkadot container */
+  .polkadots {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+    z-index: 1;
+  }
+  
+  /* Dot base style */
+  .dot {
+    position: absolute;
+    border-radius: 50%;
+    opacity: 0.8;
+    animation: moveLeft linear infinite;
+  }
+  
+  /* Sizes */
+  .dot.small { width: 30px; height: 30px; }
+  .dot.medium { width: 60px; height: 60px; }
+  .dot.large { width: 100px; height: 100px; }
+  
+  /* Green shades */
+  .green1 { background-color: #3FD14E; }
+  .green2 { background-color: #228B22; }
+  .green3 { background-color: #32CD32; }
+  
+  /* Animation: move right to left */
+  @keyframes moveLeft {
+    from {
+      transform: translateX(100vw);
+    }
+    to {
+      transform: translateX(-120px); /* move fully off screen */
+    }
+  }
+  
+  /* Random placement and speeds */
+  .dot:nth-child(1) { top: 10%; animation-duration: 12s; }
+  .dot:nth-child(2) { top: 30%; animation-duration: 18s; }
+  .dot:nth-child(3) { top: 50%; animation-duration: 25s; }
+  .dot:nth-child(4) { top: 70%; animation-duration: 15s; }
+  .dot:nth-child(5) { top: 20%; animation-duration: 20s; }
+  .dot:nth-child(6) { top: 60%; animation-duration: 22s; }
+  .dot:nth-child(7) { top: 80%; animation-duration: 28s; }
+  
+  /* Emoji buttons container */
+.emoji-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 20px; /* spacing between buttons */
+    margin-top: 30px;
+  }
+  
+  /* Button styling */
+  .emoji-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100px;
+    height: 100px;
+    background-color: #a7d8ff; /* pastel blue */
+    border: 3px solid black;
+    border-radius: 20px; /* rounded box shape */
+    font-size: 2.5rem;
+    text-decoration: none;
+    color: black; /* emoji color stays intact */
+    box-shadow: 3px 3px 0px black; /* playful shadow */
+    transition: transform 0.2s ease, background-color 0.2s ease;
+    cursor: pointer;
+  }
+  
+  /* Hover effect */
+  .emoji-btn:hover {
+    background-color: #87c8ff; /* slightly darker blue */
+    transform: translateY(-5px);
+  }
+  
