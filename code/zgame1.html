@@ -4,11 +4,13 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Pond Page</title>
-  <link rel="stylesheet" href="C:\Users\Administrator\Desktop\Programming Projects\Frog_Website\css\zgamefront1.css">
+  <link rel="stylesheet" href="css/zgamefront1.css">
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
   <!-- Back button -->
-  <a href="C:\Users\Administrator\Desktop\Programming Projects\Frog_Website\code\selection.html" class="back-btn">
+  <a href="selection.html" class="back-btn">
     <span class="arrow"></span>
   </a>
 
@@ -23,17 +25,15 @@
   <script>
     const container = document.getElementById("ripple-container");
 
+    // Listen for clicks/taps on the whole document
     document.addEventListener("click", function(e) {
       const ripple = document.createElement("span");
       ripple.className = "ripple";
       ripple.style.left = e.clientX + "px";
       ripple.style.top = e.clientY + "px";
-      
       container.appendChild(ripple);
 
-      setTimeout(() => {
-        ripple.remove();
-      }, 1000); // remove after animation
+      setTimeout(() => ripple.remove(), 1000);
     });
   </script>
 </body>

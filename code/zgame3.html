@@ -4,11 +4,11 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Clover Pop Page</title>
-  <link rel="stylesheet" href="C:\Users\Administrator\Desktop\Programming Projects\Frog_Website\css\zgamefront3.css">
+  <link rel="stylesheet" href="css/zgamefront3.css">
 </head>
 <body>
   <!-- Top-left arrow button -->
-  <a href="C:\Users\Administrator\Desktop\Programming Projects\Frog_Website\code\selection.html" class="back-btn">
+  <a href="code/selection.html" class="back-btn">
     <span class="arrow"></span>
   </a>
 
@@ -17,6 +17,7 @@
 
   <script>
     const container = document.getElementById("cloverContainer");
+    container.style.position = "relative"; // ensures particle positioning relative to container
     const cloverCount = 30;
 
     function createClover() {
@@ -27,10 +28,10 @@
       clover.textContent = "☘️";
       container.appendChild(clover);
 
-      // Random sway parameters
+      // Random sway
       const swayAmplitude = 3 + Math.random() * 5; // 3-8px
       const swayDuration = 2000 + Math.random()*2000; // 2-4s
-      const swayDirection = Math.random() < 0.5 ? 1 : -1; // left or right
+      const swayDirection = Math.random() < 0.5 ? 1 : -1;
 
       clover.animate([
         { transform: `translateX(0px)` },
@@ -43,6 +44,7 @@
         easing: 'ease-in-out'
       });
 
+      // Click/tap effect
       clover.addEventListener("click", () => {
         createParticles(clover.offsetLeft, clover.offsetTop);
         clover.remove();
@@ -52,8 +54,8 @@
       });
     }
 
-    // Initial staggered clover creation
-    for(let i=0;i<cloverCount;i++){
+    // Initial staggered creation
+    for(let i=0; i<cloverCount; i++){
       setTimeout(createClover, i*150);
     }
 
@@ -72,9 +74,9 @@
         const dy = Math.sin(angle)*distance;
 
         particle.animate([
-          {transform:`translate(0,0)`, opacity:1},
-          {transform:`translate(${dx}px, ${dy}px)`, opacity:0}
-        ],{
+          { transform: `translate(0,0)`, opacity:1 },
+          { transform: `translate(${dx}px, ${dy}px)`, opacity:0 }
+        ], {
           duration: 500 + Math.random()*300,
           easing:"ease-out"
         });
